@@ -1,0 +1,11 @@
+install.packages("stats") 
+# Load required library 
+ibrary(stats) 
+# Generate sample data 
+set.seed(123) 
+data <- matrix(rnorm(200), ncol = 2) 
+# Perform K-means clustering 
+kmeans_result <- kmeans(data, centers = 3) # 3 clusters 
+# Print the cluster centers 
+print(kmeans_result$centers) 
+# Print the cluster membership of each point print(kmeans_result$cluster)

@@ -1,0 +1,37 @@
+library(ggplot2) 
+library(dplyr) 
+library(caTools) # for splitting data 
+# Load data 
+data <- read.csv("D:/SYDS/admission.csv") # Make sure to replace "your_data_file.csv" with your actual file name 
+# Explore data 
+head(data) 
+summary(data) 
+# Preprocess data if needed (e.g., handle missing values, scale features) 
+# Split data into training and testing sets 
+set.seed(123) 
+split <- sample.split(data$admit, SplitRatio = 0.7) 
+train_data <- subset(data, split == TRUE) 
+test_data <- subset(data, split == FALSE) 
+# Fit logistic regression model 
+model <- glm(admit ~ gre + gpa + rank, data = train_data, family = "binomial")
+# Summary of the model 
+summary(model) 
+# Predictions on test data 
+predictions <- predict(model, newdata = test_data, type = "response") 
+# Convert probabilities to binary outcomes (0 or 1) 
+predicted_classes <- ifelse(predictions > 0.5, 1, 0) 
+# Evaluate the model 
+accuracy <- mean(predicted_classes == test_data$admit) 
+cat("Accuracy on test set:", accuracy, "\n") 
+# Check if the model is a good fit (e.g., by examining residuals, ROC curve, etc.) 
+# Plot ROC curve 
+library(pROC) 
+roc_curve <- roc(test_data$admit, predictions) 
+plot(roc_curve, main = "ROC Curve", col = "blue") 
+auc <- auc(roc_curve) 
+legend("bottomright", legend = paste("AUC =", round(auc, 2)), col = "blue", lwd = 2) 
+# Check for the required library in R 
+if (!require(MASS)) { 
+install.packages("MASS") 
+library(MASS) 
+}

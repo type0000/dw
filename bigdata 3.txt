@@ -1,0 +1,57 @@
+Hadoop Distributed File System (HDFS) is a distributed file storage system designed to handle large datasets across clusters of commodity hardware. Developed as a core component of the Apache Hadoop project, HDFS divides large files into smaller blocks and distributes them across nodes in a cluster. This distributed, fault-tolerant approach ensures efficient data storage, retrieval, and processing.
+
+Key Features of HDFS:
+Distributed Storage:
+* HDFS divides large files into fixed-size blocks (typically 128 MB or 256 MB).
+* These blocks are distributed across multiple nodes in a Hadoop cluster.
+* The distributed nature allows for parallel processing and improved data access times.
+Replication for Fault Tolerance:
+
+* To ensure fault tolerance, HDFS replicates each block multiple times across different nodes.
+* The default replication factor is usually set to three, meaning each block has two additional copies on different nodes.
+* In case of node failure, the system can retrieve the data from the replicas, ensuring data availability
+High Throughput and Scalability:
+* HDFS is designed for high-throughput data access and is capable of handling large-scale data processing tasks.
+* It scales horizontally, allowing organizations to add more nodes to the cluster as data needs grow, ensuring scalability.
+Write-once, Read-many (WORM):
+* HDFS follows a WORM model, meaning that once data is written, it is typically not modified.
+* This simplifies data consistency and enables efficient data processing, especially for batch-oriented tasks.
+Data Integrity:
+* HDFS includes mechanisms to detect and correct data corruption.
+* Regular checksums are performed on data blocks, ensuring the integrity of stored
+information
+HDFS Architecture:
+NameNode:
+* The central controller of the file system.
+* Manages the metadata, including the file structure, permissions, and block locations.
+* Single point of failure, but its metadata is periodically backed up to a secondary NameNode for recovery.
+DataNodes:
+* Store actual data blocks.
+* Periodically send heartbeat signals and block reports to the NameNode, confirming their health and the status of stored blocks.
+Secondary NameNode:
+* Assists the primary NameNode by merging its edit logs into a new snapshot, preventing the primary NameNode from becoming a single point of failure.
+
+HDFS Commands - Navigating and Interacting with the Distributed File System:
+Understanding the basics of the Hadoop Distributed File System (HDFS) involves mastering a set of command-line tools for efficient interaction. These commands help users navigate, inspect, and manage data within the distributed file system. Here are some fundamental HDFS commands:
+Listing Contents of a Directory:
+This command lists the contents of the specified HDFS directory. hdfs dfs-ls /path/to/directory
+Creating a Directory:
+Use this command to create a new directory in HDFS. hdfs dfs -mkdir /path/to/new_directory
+Copying Local Files to HDFS:
+Copies files from the local file system to HDFS. hdfs dfs-copyFromLocal /local/path /hdfs/path
+Copying Files from HDFS to the Local File System:
+Retrieves files from HDFS and copies them to the local file system. hdfs dfs-copy ToLocal /hdfs/path / local/path
+Uploading a Local File to HDFS:
+Similar to the copyFromLocal command, this uploads a local file to HDFS. hdfs dfs-put /local/path/file.txt /hafs/path
+Downloading a File from HDFS to Local File System:
+Retrieves a file from HDFS and copies it to the local file system. hdfs dfs -get /hdfs/path/file.txt /local/path
+
+Viewing the Contents of a File:
+Displays the content of a file stored in HDFS. hdfs dfs - cat /hdfs/path/file.txt
+Moving a File or Directory within HDFS:
+Moves a file or directory from one location to another within HDFS. hdfs dfs-mv /source/path /destination/path
+Removing a File or Directory:
+Deletes a file or an empty directory from HDFS. hdfs dfs -rm /hdfs/path/file.txt
+hdfs dfs-rmdir /hdfs/path/directory
+Checking Disk Usage:
+Displays the disk usage of a specified HDFS directory. hdfs dfs -du -h /hdfs/path

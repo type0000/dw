@@ -1,0 +1,27 @@
+install.packages("class") 
+# Load required library 
+library(class) 
+# Load dataset (example using built-in Iris dataset) 
+data(iris) 
+# Split dataset into train and test sets 
+set.seed(123) # For reproducibility 
+trainIndex <- sample(1:nrow(iris), 0.8 * nrow(iris)) 
+data_train <- iris[trainIndex, ] 
+data_test <- iris[-trainIndex, ] 
+# Define the number of nearest neighbors (k) 
+k <- 5 
+# Train KNN model 
+knn_model <- knn(train = data_train[, -5], test = data_test[, -5], cl = data_train$Species, k = k) 
+# Evaluate performance 
+conf_matrix <- table(Actual = data_test$Species, Predicted = knn_model)
+accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix) 
+precision <- diag(conf_matrix) / colSums(conf_matrix) 
+recall <- diag(conf_matrix) / rowSums(conf_matrix) 
+f1_score <- 2 * precision * recall / (precision + recall) 
+# Print results 
+print("Confusion Matrix:") 
+print(conf_matrix) 
+print(paste("Accuracy:", accuracy)) 
+print(paste("Precision:", precision)) 
+print(paste("Recall:", recall)) 
+print(paste("F1-Score:", f1_score))

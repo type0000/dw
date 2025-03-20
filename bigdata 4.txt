@@ -1,0 +1,46 @@
+Hardware / Software Required: Windows 10, MongoDB, Jupyter Notebook
+Install MongoDB Community Edition:
+1. Download the installer.
+* Download the MongoDB Community msi installer from the following link: - https://www.mongodb.com/try/download/community
+* In the Platform dropdown, select Windows.
+* In the Package dropdown, select msi.
+* Click Download.
+
+2. Run the MongoDB installer.
+* For example, from the Windows Explorer/File Explorer:
+Go to the directory where you downloaded the MongoDB installer (msi file).
+* By default, this is your Downloads directory.
+* Double-click the msi file.
+
+3. Follow the MongoDB Community Edition installation wizard.
+* Choose Setup Type as complete
+
+4. Select Install MongoD as a Service MongoDB as a service.
+* Run the service as Network Service user (Default)
+
+5. Select Install MongoDB Compass (Default) given in bottom left corner tick the box;
+Just finalize the installation.
+
+6. Launch MongoDB: Once the installation is complete, you can start MongoDB using the mongod command in the command prompt
+* And after launching it create new connection as given below;
+* Click Save & Connect
+* Create a new database: By clicking "+ Create database"
+* Add a database and collection name and remember it for further process
+
+
+Installing Jupyter Notebook using pip:
+1. Jupyter: Command to install Jupyter:
+* python -m pip install jupyter
+
+2. Affer finishing Installation run the given below command to just simply open the jupyter notebook:
+* Jupyter notebook
+
+3. Make a new notebook in the jupyter notebook and run this code given below: 
+[Note: Make sure that you change the database and collection name as per your given code and localhost of the mongodb compass]
+
+* Click download to download the python file
+
+Final Procedure:
+1. Open the Mongodb compass and go to your collection folder and just import the data or that python file we just downloaded from jupyter notebook by clicking on " Import Data "
+
+2. Show the result displayed on the MongoDB:

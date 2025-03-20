@@ -1,0 +1,20 @@
+install.packages("e1071") 
+# Load the required library 
+library(e1071) 
+# Load the Iris dataset 
+data(iris) 
+head(iris) 
+# Split the dataset into training and testing sets 
+set.seed(123) # for reproducibility 
+train_index <- sample(1:nrow(iris), 0.7 * nrow(iris)) # 70% training, 30% testing train_data <- iris[train_index, ] 
+test_data <- iris[-train_index, ] 
+# Create and train the SVM model 
+svm_model <- svm(Species ~ ., data = train_data, kernel = "radial") 
+# Make predictions on the testing set 
+predictions <- predict(svm_model, test_data) 
+# Evaluate the model 
+accuracy <- mean(predictions == test_data$Species) 
+print(paste("Accuracy:", accuracy)) 
+# Display confusion matrix
+confusion_matrix <- table(predictions, test_data$Species) print("Confusion Matrix:") 
+print(confusion_matrix)

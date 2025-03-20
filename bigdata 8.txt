@@ -1,0 +1,14 @@
+# Load necessary libraries library(ggplot2)
+
+# Load the dataset
+data <- read.csv("D:/SYDS/admission.csv") # Replace "admission_dataset.csv" with your actual file name
+head(data)
+# Explore the structure and summary statistics of the dataset str(data)
+summary(data)
+
+
+# Fit multiple regression model
+model <- lm(admit ~ gre + gpa + rank, data = data)
+
+
+# Summary of the model summary(model)

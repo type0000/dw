@@ -1,0 +1,37 @@
+Steps:
+1] Install hadoop version 3.3.3 (https://hadoop.apache.org/release/3.3.3.html)
+
+2]Install Java jdk 1.8 version (Windows)
+
+3] Now to run hadoop open cod prompt - Right Click - Run as administrator
+
+4] Now we will format namenode by using command (hdfs namenode -format)
+
+5] Now we will start all commands in hadoop by using command(start-all.cmd)
+
+6] Now Enter Path (C: hadoop\sbin) as given below:
+
+7] Now open browser and type localhost:9870 and locathost:8088 to open hadoop.
+
+8] Now we will create a folder and in that folder we will create a (.txt) file and enter data into it.
+
+9] Now we will go again to cmd and type some commands:
+i) we will create input file in hadoop
+ii) Now we will insert our data.txt file into input directory
+ili) Now to check the data in data.txt file:
+iv) Now to implement word count program type command:
+(C:\hadoop\sbin>hadoop jar C:/hadoop/share/hadoop/mapreduce/hadoop-
+mapreduce-examples-3.3.3.jar wordcount /input /output) and Click Enter.
+
+To get path go to C:/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.3.jar
+
+Now choose last file and copy file name:
+
+10) Now to see the output go to cmd again and type:
+(hadoop fs -cat/output/*)
+
+We can also see the output by going to (Browse Directory - Click on Output Tab - Click on part-r-00000 - Click on Head the file (first 32K) )
+
+11] Now to check whether it is showing in hadoop cluster:
+
+(Go to localhost:8088 here it will show)
